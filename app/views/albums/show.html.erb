@@ -1,0 +1,19 @@
+<% title h(@album.name) %>
+
+<h3 id="photos_count"><%= pluralize(@album.assets.size, "Photo")%></h3>
+
+<div id="assets"> 
+  <%= render :partial => @album.assets %>
+</div>
+
+<%= render :partial => "show" %>
+
+<h3>Upload a Photo</h3> 
+
+<% form_for Asset.new(:album_id => @album.id), :html => {:multipart => true} do |f| %> 
+  <%= f.hidden_field :album_id, "value" => @album.id %>
+  <p>
+  <%= f.file_field :photo %> </p>
+
+<p><%= f.submit "Upload" %></p> <% end %>
+<p><%= link_to "All albums", albums_path %></p>
