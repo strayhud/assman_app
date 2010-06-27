@@ -1,2 +1,2 @@
 $('#photos_count').html('<%= pluralize(@total_assets.count, "Photo") %>');
-$('#assets').append("<%= escape_javascript(render(:partial => "assets/asset", :locals => {:asset => @asset})) %>");
+$('#album_assets').append("<%= escape_javascript(render(:partial => "assets/asset", :locals => {:asset => @asset})) %>");

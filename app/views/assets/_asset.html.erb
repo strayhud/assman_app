@@ -1,3 +1,10 @@
-<div class="upload"> 
-  <%= image_tag asset.photo.url(:thumb) %>
+<div class="asset">
+<div class="photo_asset">
+    <a href=<%= asset.photo.url(:medium) %> 
+        onmouseout="hideTooltip()" 
+        onmouseover="showTooltip(event,'<%= asset.photo_file_name %>');return false">
+       <%= image_tag asset.photo.url(:thumb), 
+            :class => "shadow", :alt => asset.photo_file_name %>
+    </a>
+</div>
 </div>

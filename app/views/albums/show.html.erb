@@ -1,19 +1,48 @@
-<% title h(@album.name) %>
+<script type="text/javascript">
+    TopUp.images_path = "/images/top_up/";
+      TopUp.addPresets({
+        "#album_assets a": {
+          title: "Gallery {alt} ({current} of {total})",
+          group: "album_assets",
+          readAltText: 0,
+          effect: "switch",
+          overlayClose: 1,
+          resizable: 1,
+          layout: "flatlook",
+          shaded: 1
+        }
+      });
+</script>
 
-<h3 id="photos_count"><%= pluralize(@album.assets.size, "Photo")%></h3>
+<table width='100%'>
+  <tr>
+      <td width='100%'>
+        <% title h(@album.name) %>
+        <h3 id="photos_count"><%= pluralize(@album.assets.size, "Photo")%></h3>
+      </td>
+  </tr>
+  <tr>
+    <td width='100%'>
+        <div id="album_assets"> 
+            <%= render :partial => @album.assets %>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td width='100%'>
+        <div id="album_footer">
+            <%= render :partial => "show" %>
 
-<div id="assets"> 
-  <%= render :partial => @album.assets %>
-</div>
+            <h3>Upload a Photo</h3> 
 
-<%= render :partial => "show" %>
+            <% form_for Asset.new(:album_id => @album.id), :html => {:multipart => true} do |f| %> 
+              <%= f.hidden_field :album_id, "value" => @album.id %>
+              <p>
+              <%= f.file_field :photo %> </p>
 
-<h3>Upload a Photo</h3> 
-
-<% form_for Asset.new(:album_id => @album.id), :html => {:multipart => true} do |f| %> 
-  <%= f.hidden_field :album_id, "value" => @album.id %>
-  <p>
-  <%= f.file_field :photo %> </p>
-
-<p><%= f.submit "Upload" %></p> <% end %>
-<p><%= link_to "All albums", albums_path %></p>
+            <p><%= f.submit "Upload" %></p> <% end %>
+            <p><%= link_to "All albums", albums_path %></p>
+        </div>
+    </td>
+  </tr>
+</table>
