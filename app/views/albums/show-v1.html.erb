@@ -21,14 +21,11 @@
         <h3 id="photos_count"><%= pluralize(@album.assets.size, "Photo")%></h3>
       </td>
   </tr>
-  <tr valign='top'>
-    <td width='30%'>
+  <tr>
+    <td width='100%'>
         <div id="album_assets"> 
             <%= render :partial => @album.assets %>
         </div>
-    </td>
-    <td width='70%'>
-        <%= image_tag @album.assets.find(1).photo.url(:medium), :class => "shadow" %>
     </td>
   </tr>
   <tr>

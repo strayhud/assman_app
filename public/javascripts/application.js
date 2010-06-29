@@ -100,3 +100,11 @@ function hideTooltip()
 	dhtmlgoodies_tooltipShadow.style.display='none';		
 	if(tooltip_is_msie)dhtmlgoodies_iframe.style.display='none';		
 }
+
+
+/* Resize an image to fit its container */
+function resize_image() {
+            var img = document.getElementsByTagName('img').item(0);
+            if (img.offsetHeight > img.offsetWidth) img.style.height = '100%';
+            else img.style.width = '100%';
+        }
