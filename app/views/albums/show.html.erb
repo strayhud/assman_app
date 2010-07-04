@@ -23,12 +23,14 @@
   </tr>
   <tr valign='top'>
     <td width='30%'>
-        <div id="album_assets"> 
+        <div id="asset_list"> 
             <%= render :partial => @album.assets %>
         </div>
     </td>
     <td width='70%'>
-        <%= image_tag @album.assets.find(1).photo.url(:medium), :class => "shadow" %>
+        <div id="preview_pane">
+            <%= image_tag @album.assets.find(1).photo.url(:medium), :class => "shadow" %>
+        </div>
     </td>
   </tr>
   <tr>
