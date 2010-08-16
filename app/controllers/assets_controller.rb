@@ -6,6 +6,10 @@ class AssetsController < ApplicationController
   def show
     @asset = Asset.find(params[:id], :include => :album)
     @total_assets = Asset.find(:all, :conditions => { :album_id => @asset.album.id})
+#    respond_to do |format|
+#      format.html { render }
+#      format.json { puts "RENDERING JSON!!!!!!" }
+#    end
   end
   
   def new
@@ -53,6 +57,7 @@ private
       h = Hash.new 
       h[:asset] = Hash.new 
       h[:asset][:album_id] = params[:album_id] 
+      h[:asset][:photo_id] = params[:photo_id] 
       h[:asset][:photo] = params[:Filedata] 
       h[:asset][:photo].content_type = MIME::Types.type_for(h[:asset][:photo].original_filename).to_s
       h

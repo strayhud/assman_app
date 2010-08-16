@@ -102,9 +102,27 @@ function hideTooltip()
 }
 
 
-/* Resize an image to fit its container */
-function resize_image() {
-            var img = document.getElementsByTagName('img').item(0);
-            if (img.offsetHeight > img.offsetWidth) img.style.height = '100%';
-            else img.style.width = '100%';
-        }
+function report_size(elem)
+{
+  	var w = elem.width, h = elem.height;
+	alert('Size of '+elem+' is:\nwidth: ' + w + '\nheight: '+h);
+}
+
+function resize_preview_image() 
+{
+	var image = $("#preview_photo");
+	var pane = $(window);
+	if (image.height()>image.width())
+		image.height(pane.height()/2);
+	else
+		image.width(pane.width()/2);
+}
+
+var resizeTimer = null;
+$(window).bind('resize', function() {
+//    if (resizeTimer) clearTimeout(resizeTimer);
+//    resizeTimer = setTimeout(doSomething, 100);
+	resize_preview_image();
+});
+
+

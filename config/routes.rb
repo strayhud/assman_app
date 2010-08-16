@@ -3,7 +3,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :albums
 
-  map.root :controller => 'albums'
+  map.resources :store
+
+  map.root :controller => 'store'
 
   # The priority is based upon order of creation: first created -> highest priority.
 

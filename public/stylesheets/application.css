@@ -11,7 +11,7 @@ a img {
 }
 
 a {
-  color: #0000FF;
+  color: #FFF;
 }
 
 .clear {
@@ -74,21 +74,73 @@ a {
 }
 
 #container {
-  width: 80%;
+  color: #3A87C5;
+  width: 95%;
+  height: 500;
   margin: 0 auto;
-  background-color: #777;
-  padding: 20px 20px;
+  background-color: black;
+  padding: 10px;
   border: solid 1px black;
 }
 
 .asset 
 {
-float:left;
-width:110px;
-height:110px;
-margin:10px;
+	float:left;
+	width:110px;
+	height:110px;
+	margin:10px;
 }
 
+#photo_area {
+	width: 100%;
+}
+
+#asset_list {
+	float:left;
+	width: 40%;
+}
+
+#preview_pane {
+	float:left;
+	width: 60%;
+}
+
+#footer_area {
+	clear: both;
+	width: 100%;
+}
+
+/************ slideshow switcher ************
+
+#asset_list {
+    position:relative;
+}
+
+#asset_list DIV {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:8;
+    opacity:0.0;
+    background-color: #FFF;
+}
+
+#asset_list DIV.active {
+    z-index:10;
+    opacity:1.0;
+}
+
+#asset_list DIV.last-active {
+    z-index:9;
+}
+
+#asset_list DIV IMG {
+    display: block;
+    border: 0;
+    margin-bottom: 10px;
+}
+
+/************ slideshow switcher ************/
 
 /* Adds shadow to thumbnails */
 .shadow

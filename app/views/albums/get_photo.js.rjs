@@ -1,0 +1,2 @@
+page.replace_html("preview_image", :partial =>"preview_photo", :object => @preview_photo)
+page.alert("here")

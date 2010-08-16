@@ -1,53 +1,33 @@
-<script type="text/javascript">
-    TopUp.images_path = "/images/top_up/";
-      TopUp.addPresets({
-        "#album_assets a": {
-          title: "Gallery {alt} ({current} of {total})",
-          group: "album_assets",
-          readAltText: 0,
-          effect: "switch",
-          overlayClose: 1,
-          resizable: 1,
-          layout: "flatlook",
-          shaded: 1
-        }
-      });
-</script>
 
-<table width='100%'>
-  <tr>
-      <td width='100%'>
-        <% title h(@album.name) %>
-        <h3 id="photos_count"><%= pluralize(@album.assets.size, "Photo")%></h3>
-      </td>
-  </tr>
-  <tr valign='top'>
-    <td width='30%'>
-        <div id="asset_list"> 
-            <%= render :partial => @album.assets %>
-        </div>
-    </td>
-    <td width='70%'>
-        <div id="preview_pane">
-            <%= image_tag @album.assets.find(1).photo.url(:medium), :class => "shadow" %>
-        </div>
-    </td>
-  </tr>
-  <tr>
-    <td width='100%'>
-        <div id="album_footer">
-            <%= render :partial => "show" %>
+<div id="header_area">
+    <% title h(@album.name) %>
+    <h3 id="photos_count"><%= pluralize(@album.assets.size, "Photo")%></h3>
+    <%= render :partial => "show" %>
+    <% form_for Asset.new(:album_id => @album.id), :html => {:multipart => true} do |f| %> 
+      <%= f.hidden_field :album_id, "value" => @album.id %>
+      <%= f.file_field :photo %> 
+    <% end %>
+    <%= link_to "All albums", albums_path %>
+</div>
 
-            <h3>Upload a Photo</h3> 
+<div id="photo_area">
+    <div id="asset_list"> 
+        <%= render :partial => @album.assets %>
+    </div>
+    <div id="preview_pane">
+        <% if @album.assets.size!=0 %>
+            <div id="preview_image">
+                <%= render :partial => "preview_photo", :object => @preview_photo %>
+            </div>
+        <% end %>
+         <div id="prevNext">
+             <% form_remote_tag :url => { :action => 'get_photo', :album_id =>@album.id } do %>
+               <%= image_submit_tag "leftarrow.png", :value=>"left", :name => "arrowbutton" %>
+               <%= image_submit_tag "rightarrow.png", :value=>"right", :name => "arrowbutton" %>
+             <% end %>
+         </div>
+    </div>
+</div>
 
-            <% form_for Asset.new(:album_id => @album.id), :html => {:multipart => true} do |f| %> 
-              <%= f.hidden_field :album_id, "value" => @album.id %>
-              <p>
-              <%= f.file_field :photo %> </p>
-
-            <p><%= f.submit "Upload" %></p> <% end %>
-            <p><%= link_to "All albums", albums_path %></p>
-        </div>
-    </td>
-  </tr>
-</table>
+<div id="footer_area">
+</div>

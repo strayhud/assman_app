@@ -1,10 +1,17 @@
 class AlbumsController < ApplicationController
+  attr_accessor :current_photo
+  
+  def initialize
+    @current_photo=1
+  end
+  
   def index
     @albums = Album.all
   end
   
   def show
     @album = Album.find(params[:id], :include => :assets)
+    @preview_photo = @album.assets.find(@current_photo)
   end
   
   def new
@@ -18,6 +25,21 @@ class AlbumsController < ApplicationController
       redirect_to @album
     else
       render :action => 'new'
+    end
+  end
+  
+  def get_photo
+    direction=params[:arrowbutton]
+    if (direction=='left') then
+      @current_photo = @current_photo-1
+    else
+      @current_photo = @current_photo+1
+    end
+    puts "CURRENT_PHOTO=#{@current_photo}"
+    @album = Album.find(params[:album_id], :include => :assets)
+    @preview_photo = @album.assets.find(@current_photo)
+    respond_to do |format|
+      format.js
     end
   end
   

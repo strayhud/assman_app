@@ -2,13 +2,10 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title><%= h(yield(:title) || "Untitled") %></title>
-    <%= stylesheet( 'uploadify') %> 
+    <title><%= h(yield(:title) || "Media Store") %></title>
+    <%= javascript( 'jquery-1.3.2.min') %>
     <%= stylesheet( 'application') %> 
-    <%= javascript( 'application.js') %>
-    <%= javascript( 'jquery-1.3.2.min.js') %>
-    <%= javascript( 'top_up/jquery/*.js') %>
-    <%= javascript( 'top_up/top_up-min.js') %>
+    <%= javascript( 'application') %>
     <%= yield(:head) %>
   </head>
   <body>
