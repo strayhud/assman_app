@@ -52,38 +52,4 @@
       }
   });
   
-  function slideSwitch(direction) {
-
-      var $active = $('#asset_list DIV.active');
-
-      if ( $active.length == 0 ) $active = $('#asset_list DIV:last');
-
-      var $next;
-      if (direction == '37')
-        $next =  $active.prev().length ? $active.prev() : $('#asset_list DIV:last');
-      else     
-        $next =  $active.next().length ? $active.next() : $('#asset_list DIV:first');
-
-      $active.addClass('last-active');
-
-      $next.css({opacity: 0.0})
-          .addClass('active')
-          .animate({opacity: 1.0}, 1000, function() {
-              $active.removeClass('active last-active');
-          });
-  }
-
-  jQuery.ajaxSetup({
-      'beforeSend': function(xhr) {xhr.setRequestHeader("Accept","text/javascript")}
-  })
-  
-  $(window).keypress(function(event) {
-      if (event.keyCode == '39' || event.keyCode == '37') {
-        $.get('<%= asset_path(5) %>', null, null, "script");
-        return false;
-      }
-      return true;
-  });
-
-  
 </script>

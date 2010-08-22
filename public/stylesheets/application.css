@@ -73,8 +73,37 @@ a {
   list-style: disc;
 }
 
-#container {
-  color: #3A87C5;
+#banner {
+	background: #000 ;
+	padding-bottom: 6px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 40px;
+	font-weight: bold;
+	color: #2874C1  ;
+	text-align: left;
+	border-bottom: solid 2px;
+}
+#banner img {
+	height: 50px;
+}
+
+#menu {
+  float: left;
+  margin-top: 4px;
+  padding-top: 1em;
+  padding-left: 1em;
+  padding-bottom: 1em;
+  width: 12em;
+  height: 50em;
+  background: #0B5CAC;
+}
+
+#menu a {
+  color: white;
+  font-size: small;
+}
+#main {
+  color: #2874C1;
   width: 95%;
   height: 500;
   margin: 0 auto;

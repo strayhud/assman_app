@@ -8,17 +8,29 @@
     <%= javascript( 'application') %>
     <%= yield(:head) %>
   </head>
-  <body>
-    <div id="container">
-      <%- flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <body id="store">
+      <%- if @page_title -%>
+      <div id="banner">
+          <%= image_tag @page_icon, :align=>"top" %>
+          <%= @page_title || "Media Store" %>
+      </div>
+      <div id="menu">
+          <a href="http://localhost:3000/store">Home</a><br />
+          <a href="http://www..../faq">Questions</a><br />
+          <a href="http://www..../news">News</a><br />
+          <a href="http://www..../contact">Contact</a><br />
+      </div>
       <%- end -%>
-      
-      <%- if show_title? -%>
-        <h1><%=h yield(:title) %></h1>
-      <%- end -%>
-      
-      <%= yield %>
-    </div>
+      <div id="main">
+          <%- flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          <%- end -%>
+
+          <%- if show_title? -%>
+          <h1><%=h yield(:title) %></h1>
+          <%- end -%>
+
+          <%= yield %>
+      </div>
   </body>
 </html>

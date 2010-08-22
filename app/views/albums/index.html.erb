@@ -1,7 +1,4 @@
 <table>
-  <tr>
-    <th>Name</th>
-  </tr>
   <% for album in @albums %>
     <tr>
       <td><%=h album.name %></td>
@@ -13,3 +10,5 @@
 </table>
 
 <p><%= link_to "New Album", new_album_path %></p>
+<p><%= link_to "Main Menu", :controller => 'store' %></p>
+
